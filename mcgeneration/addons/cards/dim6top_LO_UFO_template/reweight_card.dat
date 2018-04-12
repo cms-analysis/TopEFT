@@ -1,0 +1,31 @@
+#******************************************************************
+#                       Reweight Module                           *
+#******************************************************************
+
+change rwgt_dir rwgt
+
+launch --rwgt_name=ctg_p1 
+set ctG 1.0 
+
+launch --rwgt_name=ctg_m1
+set ctG -1.0 
+
+launch --rwgt_name=ctgi_p1
+set ctGI 1.0 
+
+launch --rwgt_name=ctgi_m1
+set ctGI -1.0 
+
+launch --rwgt_name=ctw_p1
+set ctW 1.0 
+
+launch --rwgt_name=ctw_m1
+set ctW -1.0 
+
+launch --rwgt_name=ctwi_p1
+set ctWI 1.0 
+
+launch --rwgt_name=ctwi_m1
+set ctWI -1.0 
+
+

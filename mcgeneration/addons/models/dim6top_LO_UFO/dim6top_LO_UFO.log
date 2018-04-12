@@ -1,0 +1,119 @@
+# This file was automatically created by FeynRules 2.3.27
+# Mathematica version: 9.0 for Mac OS X x86 (64-bit) (November 20, 2012)
+# Date: Sun 20 Aug 2017 21:25:45
+
+
+# 
+# This is the logfile for the model Standard Model
+
+# Authors: N. Christensen, C. Duhr, B. Fuks
+# Model version: 1.4.7
+# Checking the Quantum numbers
+   * Electric charge defined.
+#
+# Particle definitions
+#
+
+   * No particles removed. All particles correspond to GenInt setup.
+
+# Automatically assigned PDG numbers
+   * Assigned PDG number 9000001 to particle ghA
+   * Assigned PDG number 9000002 to particle ghZ
+   * Assigned PDG number 9000003 to particle ghWp
+   * Assigned PDG number 9000004 to particle ghWm
+
+
+# Compulsory PDG codes:
+   * Class SM leptons complete.
+   * Class SM neutrinos complete.
+   * Class SM quarks complete.
+   * Class SM gauge bosons complete.
+#
+# Parameter definitions
+#
+
+   * Parameter cQQplus has no value. Default value 1 assigned.
+   * Parameter ctA has no value. Default value 1 assigned.
+
+
+# Vertices
+   * Appending manually appended vertices.
+   * Number of classes vertices: 161
+   * Number of flavored vertices: 161
+   * Saved vertices in InterfaceRun[ 1 ].
+   * Checked QNumber conservation.
+      - Quantum number GhostNumber conserved in all vertices.
+      - Quantum number LeptonNumber conserved in all vertices.
+      - Quantum number Q conserved in all vertices.
+      - Quantum number Y conserved in all vertices.
+   * particles.py written.
+   * parameters.py written.
+#
+# Vertex definitions
+#
+
+   * 166 vertices written.
+   * vertices.py written.
+#
+# Lorentz structure definitions
+#
+
+   * 75 lorentz structures written.
+   * lorentz.py written.
+#
+# Coupling definitions
+#
+
+   >>>> Non positive interaction order QED found for coupling GC_138.
+   >>>> Non positive interaction order QED found for coupling GC_139.
+   >>>> Non positive interaction order QED found for coupling GC_140.
+   >>>> Non positive interaction order QED found for coupling GC_141.
+   >>>> Non positive interaction order QED found for coupling GC_142.
+   >>>> Non positive interaction order QED found for coupling GC_143.
+   >>>> Non positive interaction order QED found for coupling GC_144.
+   >>>> Non positive interaction order QED found for coupling GC_145.
+   >>>> Non positive interaction order QED found for coupling GC_157.
+   >>>> Non positive interaction order QED found for coupling GC_158.
+   >>>> Non positive interaction order QED found for coupling GC_159.
+   >>>> Non positive interaction order QED found for coupling GC_160.
+   >>>> Non positive interaction order QED found for coupling GC_161.
+   >>>> Non positive interaction order QED found for coupling GC_162.
+   >>>> Non positive interaction order QED found for coupling GC_163.
+   >>>> Non positive interaction order QED found for coupling GC_164.
+   >>>> Non positive interaction order QED found for coupling GC_165.
+   >>>> Non positive interaction order QED found for coupling GC_166.
+   >>>> Non positive interaction order QED found for coupling GC_167.
+   >>>> Non positive interaction order QED found for coupling GC_168.
+   >>>> Non positive interaction order QED found for coupling GC_169.
+   >>>> Non positive interaction order QED found for coupling GC_170.
+   >>>> Non positive interaction order QED found for coupling GC_171.
+   >>>> Non positive interaction order QED found for coupling GC_172.
+   >>>> Non positive interaction order QED found for coupling GC_173.
+   >>>> Non positive interaction order QED found for coupling GC_174.
+   >>>> Non positive interaction order QED found for coupling GC_183.
+   >>>> Non positive interaction order QED found for coupling GC_184.
+   >>>> Non positive interaction order QED found for coupling GC_185.
+   >>>> Non positive interaction order QED found for coupling GC_186.
+   >>>> Non positive interaction order QED found for coupling GC_193.
+   >>>> Non positive interaction order QED found for coupling GC_194.
+   >>>> Non positive interaction order QED found for coupling GC_195.
+   >>>> Non positive interaction order QED found for coupling GC_202.
+   >>>> Non positive interaction order QED found for coupling GC_203.
+   >>>> Non positive interaction order QED found for coupling GC_204.
+   >>>> Non positive interaction order QED found for coupling GC_205.
+   >>>> Non positive interaction order QED found for coupling GC_206.
+   >>>> Non positive interaction order QED found for coupling GC_207.
+   * 222 couplings written.
+   * couplings.py written.
+#
+# Coupling order definitions
+#
+
+   * 0 couplings orders written.
+   * coupling_orders.py written.
+#
+# CTCoupling definitions
+#
+
+   * 0 CTcouplings written.
+   * CT_couplings.py written.
