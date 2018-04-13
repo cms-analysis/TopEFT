@@ -527,9 +527,6 @@ make_gridpack () {
           prepare_reweight $isnlo $WORKDIR $scram_arch $CARDSDIR/${name}_reweight_card.dat 
       fi
     
-      # agrohsje: added to debug reweighting  
-      # exit 0 
-
       cd $WORKDIR/process/madevent
       
       #prepare madspin grids if necessary

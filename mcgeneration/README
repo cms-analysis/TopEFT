@@ -1,7 +1,11 @@
-card templates can be found in the path addons/cards/UFOMODEL_template and the corresponding UFO file in addons/models
-to generate a gridpack run "source submit_madpack_ttbareft.sh"
-this will copy the template and replace settings in the default templates if needded according to what is specified 
-in the submit script 
-modify customize card to change the corresponding operators you want to use
-the example gridpack gluontop_rwgt_slc6_amd64_gcc630_CMSSW_9_3_0_tarball.tar.xz was tested in debug which 
-also contains an example lhe output with EFT and systematics weights   
+SUMMARY:
+this directory contains EFT specific modifications and addons for cms-sw/genproductions which allow to prepare EFT gridpacks 
+
+INSTRUCTIONS: 
+ * execute setup_production.sh to checkout cms-sw/genproductions and merge the EFT tools 
+ * run submit_madpack_ttbareft.sh to produce ttbar gridpacks 
+   the script will copy card templates from  addons/cards/UFOMODEL_template and the corresponding UFO file in addons/models
+   you can modify the copied cards according to your needs via sed in submit_madpack_ttbareft.sh
+   afterwards jobs are submitted to lxplus 
+
+
