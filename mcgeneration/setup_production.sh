@@ -19,8 +19,8 @@ else
     git clone -b mg26x   https://github.com/cms-sw/genproductions.git genproductions 
     cd ${GENPRODPATH}
     # copy relevant code  
-    for FILE in addons runcmsgrid_LO.sh gridpack_generation.sh submit_madpack_ttbareft.sh ; do 
-	cp -r ${EFTMCPATH}/${FILE} ${GENPRODPATH}/.
+    for FILE in addons patches runcmsgrid_LO.sh gridpack_generation.sh submit_madpack_ttbareft.sh ; do 
+	cp -r ${EFTMCPATH}/${FILE} ${GENPRODPATH}/bin/MadGraph5_aMCatNLO/.
     done
     cd ${GENPRODPATH}/.
     echo "You are done with setting up genproduction for EFT gridpack generation!"

@@ -1,0 +1,14 @@
+diff -aur a/madgraph/various/lhe_parser.py b/madgraph/various/lhe_parser.py
+--- a/madgraph/various/lhe_parser.py	2017-08-17 00:25:24.000000000 +0200
++++ b/madgraph/various/lhe_parser.py	2018-04-29 11:42:22.686008786 +0200
+@@ -1807,8 +1807,8 @@
+             if part.status == 1:
+                 old_momenta.append(FourMomentum(part))
+                 new_masses.append(new_param_card.get_value('mass', abs(part.pid)))
+-                if part.mass != new_masses[-1]:
+-                    change_mass = True
++                #if part.mass != new_masses[-1]:
++                #    change_mass = True
+         
+         if not change_mass:
+             return 1
