@@ -24,11 +24,11 @@ else
     done
 
     # add mg5_amc@nlo patches which are not yet in geproductions 
-    cp -r ${EFTMCPATH}/patches/* ${GENPRODPATH}/bin/MadGraph5_aMCatNLO/patches/.
+    cp -r ${EFTMCPATH}/mg5patches/* ${GENPRODPATH}/bin/MadGraph5_aMCatNLO/patches/.
 
     # adjust central scripts 
     cd ${GENPRODPATH}/bin/MadGraph5_aMCatNLO
-    cat ${EFTMCPATH}/nonmg5patches/*.patch | patch -p1
+    cat ${EFTMCPATH}/patches/*.patch | patch -p1
 
     echo "You are done with setting up genproduction for EFT gridpack generation!"
 fi                           
