@@ -1,0 +1,29 @@
+--- a/gridpack_generation.sh	2019-07-05 23:28:50.929166000 +0200
++++ b/../../../TopEFT/mcgeneration/gridpack_generation.sh	2019-07-06 00:07:14.081590000 +0200
+@@ -40,6 +40,14 @@
+     fi
+     XZ_OPT="$XZ_OPT" tar -cJpsf ${PRODHOME}/${name}_${scram_arch}_${cmssw_version}_tarball.tar.xz mgbasedir process runcmsgrid.sh gridpack_generation*.log InputCards $EXTRA_TAR_ARGS
+ 
++    if [ -e $CARDSDIR/${name}_reweight_card.pkl ]; then
++	cp $CARDSDIR/${name}_reweight_card.pkl ${PRODHOME}/${name}_${scram_arch}_${cmssw_version}_tarball.pkl
++    fi
++
++    if [ -e $CARDSDIR/${name}_customizecards.dat ]; then
++        cp $CARDSDIR/${name}_customizecards.dat ${PRODHOME}/${name}_${scram_arch}_${cmssw_version}_tarball.customizecard
++    fi
++
+     echo "Gridpack created successfully at ${PRODHOME}/${name}_${scram_arch}_${cmssw_version}_tarball.tar.xz"
+     echo "End of job"
+ 
+@@ -111,7 +119,10 @@
+       wget --no-check-certificate ${MGSOURCE}
+       tar xzf ${MG}
+       rm "$MG"
+-    
++
++      # careful: if you change the model path here, you have to change it in submit_cmsconnect_gridpack_generation(_singlejob).sh as well (model_directory)
++      cp -rp ${PRODHOME}/addons/models/* ${MGBASEDIRORIG}/models/
++
+       #############################################
+       #Apply any necessary patches on top of official release
+       #############################################

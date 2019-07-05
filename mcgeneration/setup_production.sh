@@ -1,11 +1,10 @@
 #!/bin/bash
 
-### settings to modify 
-# define pathes (can be kept as is)
+
+### define pathes - please keep structure and names to properly apply patches 
 EFTMCPATH=`pwd -P`
-# path should end with genproductions 
 GENPRODPATH=${EFTMCPATH}/../../genproductions                                                                                                                                                                      
-### end of settings 
+
 
 ### check out official genproduction repo, currently branch 2.6 
 if [ -d "$GENPRODPATH" ]; then
@@ -16,13 +15,21 @@ if [ -d "$GENPRODPATH" ]; then
 else 
     mkdir -p ${GENPRODPATH}
     cd ${GENPRODPATH}/..
-    git clone -b mg26x   https://github.com/cms-sw/genproductions.git genproductions 
+    git clone -b mg265   https://github.com/cms-sw/genproductions.git genproductions 
     cd ${GENPRODPATH}
-    # copy relevant code  
-    for FILE in addons patches runcmsgrid_LO.sh gridpack_generation.sh submit_madpack_ttbareft.sh ; do 
-	cp -r ${EFTMCPATH}/${FILE} ${GENPRODPATH}/bin/MadGraph5_aMCatNLO/.
+
+    # copy eft relevant code  
+    for COPY in addons submit_madpack_ttbareft.sh ; do 
+	cp -r ${EFTMCPATH}/${COPY} ${GENPRODPATH}/bin/MadGraph5_aMCatNLO/.
     done
-    cd ${GENPRODPATH}/.
+
+    # add mg5_amc@nlo patches which are not yet in geproductions 
+    cp -r ${EFTMCPATH}/patches/* ${GENPRODPATH}/bin/MadGraph5_aMCatNLO/patches/.
+
+    # adjust central scripts 
+    cd ${GENPRODPATH}/bin/MadGraph5_aMCatNLO
+    cat ${EFTMCPATH}/nonmg5patches/*.patch | patch -p1
+
     echo "You are done with setting up genproduction for EFT gridpack generation!"
 fi                           
 
