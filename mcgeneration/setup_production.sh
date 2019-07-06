@@ -23,8 +23,9 @@ else
 	cp -r ${EFTMCPATH}/${COPY} ${GENPRODPATH}/bin/MadGraph5_aMCatNLO/.
     done
 
-    # add mg5_amc@nlo patches which are not yet in geproductions 
-    cp -r ${EFTMCPATH}/mg5patches/* ${GENPRODPATH}/bin/MadGraph5_aMCatNLO/patches/.
+    # add mg5_amc@nlo patches which are not yet in geproductions
+    # suppress error messages as there might be no special mg5 patches and error messages are confusing  
+    cp -r ${EFTMCPATH}/mg5patches/* ${GENPRODPATH}/bin/MadGraph5_aMCatNLO/patches/. 2>/dev/null 
 
     # adjust central scripts 
     cd ${GENPRODPATH}/bin/MadGraph5_aMCatNLO
