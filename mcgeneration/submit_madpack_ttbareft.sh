@@ -11,8 +11,8 @@ for ISETUPTAG in `seq 0 ${NSETUPTAG}`; do
 	cp -rp addons/cards/${MODEL}_template/${CARD}.dat  addons/cards/${SETUP}/${SETUP}_${CARD}.dat
     done 
     sed -i -e "s|SUBSETUP|${SETUP}|g" addons/cards/${SETUP}/${SETUP}_*.dat 
-    # submit jobs to condor lxplus 
-    ./submit_condor_gridpack_generation.sh ${SETUP} addons/cards/${SETUP}
+    # run locally for testing 
+    ./gridpack_generation.sh ${SETUP} addons/cards/${SETUP}
 done
 
 
