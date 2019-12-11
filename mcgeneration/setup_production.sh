@@ -15,7 +15,7 @@ if [ -d "$GENPRODPATH" ]; then
 else 
     mkdir -p ${GENPRODPATH}
     cd ${GENPRODPATH}/..
-    git clone -b mg265   https://github.com/cms-sw/genproductions.git genproductions 
+    git clone -b master https://github.com/cms-sw/genproductions.git genproductions 
     cd ${GENPRODPATH}
 
     # copy eft relevant code  
