@@ -78,7 +78,7 @@ It contains 5 configurable parameters:
 
 As an example, let's say you want to generate 1.5 million events, using 10000 events per job, with a gridpack named `test_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz`, and save the output into a directory called `/eos/user/f/frank/test_eft_production`, you should run:
 ```
-python3 ProduceLHE_condor.py --tag=test \
+python ProduceLHE_condor.py --tag=test \
 --gridpack=./test_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz \
 --outdir=/eos/user/f/frank/test_eft_production/ \
 --neventstotal=1500000 \
