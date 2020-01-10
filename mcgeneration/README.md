@@ -95,7 +95,7 @@ condor_q
 Once all jobs have finishes, the output is stored in the "`outdir`" in the form of a number of files named "`cmsgrid_final_1.lhe`" with increasing file numbers.
 
 ### Step 7: Merging several LHE files (optional)
-It is often convenient for further processing to have one single LHE files with all your events in it. To this end, a script named `MergeLHE.sh` was added which has one command-line argument: the directory where the LHE files are stored. In the example from above, where the LHE files are stored in `/eos/user/f/frank/test_eft_production`, you can thus run from the `genproductions/bin/MadGraph5_aMCatNLO/` directory:
+It is often convenient for further processing to have one single LHE files with all your events in it. To this end, a script named [MergeLHE.sh](MergeLHE.sh) was added which has one command-line argument: the directory where the LHE files are stored. In the example from above, where the LHE files are stored in `/eos/user/f/frank/test_eft_production`, you can thus run from the `genproductions/bin/MadGraph5_aMCatNLO/` directory:
 ```
 source MergeLHE.sh /eos/user/f/frank/test_eft_production/. 
 ```
