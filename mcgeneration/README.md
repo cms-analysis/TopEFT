@@ -23,8 +23,8 @@ Open [process_cfg.py](./process_cfg.py) and fill out all the necessary fields ou
     
 	Then navigate to the corresponding "if statement" and fill out the needed parameters:
 	> **_individual_**: "`points_individual`" is an array of arrays where in each subarray the user has to manually specify the values of the WCs to be scanned for the corresponding operator (using the same ordering as the "`operators`" variable).<br/>
-    > **_rnd_scan_**: specify in "`n_points`" the number of scan points (NOTE: for N operators you need at least `1 + 2*N + (N*(N-1))/2` scan points to determine the quadratic function of the cross section). Then specify the boundaries for each operator in "`boundaries`".
-    > **_grid_**: Specify in each subarray of "`boundaries_and_npoints`" the lower and upper boundary as well as the number of points to be scanned for each operator. For k points and N operators, a grid of k^N points will be constructed.
+    > **_rnd_scan_**: specify in "`n_points`" the number of scan points (NOTE: for N operators you need at least `1 + 2*N + (N*(N-1))/2` scan points to determine the quadratic function of the cross section). Then specify the boundaries for each operator in "`boundaries`".<br/>
+    > **_grid_**: Specify in each subarray of "`boundaries_and_npoints`" the lower and upper boundary as well as the number of points to be scanned for each operator. For k points and N operators, a grid of k^N points will be constructed.<br/>
     > **_custom_**: The user has to manually specify the dictionary "`reweight_dict_tmp_`" where each key,value pair represents one specific scenario of a given set of WCs.
     
     Finally, the SM scenario (all WCs put to 0), will be included by default.
