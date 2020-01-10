@@ -21,7 +21,13 @@ Open [process_cfg.py](./process_cfg.py) and fill out all the necessary fields ou
     > grid: a rectangular grid of Wilson coefficients is scanned<br/>
     > custom: a custom reweighting scheme is provided by the user
     
-	Then navigate to the corresponding "if statement" and fill everything
+	Then navigate to the corresponding "if statement" and fill out the needed parameters:
+	> individual: "points_individual" is an array of arrays where in each subarray the user has to manually specify the values of the WCs to be scanned for the corresponding operator (using the same ordering as the "operators" variable).<br/>
+    > rnd_scan: specify in "n_points" the number of scan points (NOTE: for N operators you need at least 1 + 2*N + (N*(N-1))/2 scan points to determine the quadratic function of the cross section). Then specify the boundaries for each operator in "boundaries".
+    > grid: Specify in each subarray of "boundaries_and_npoints" the begin and start values and the number of points to be scanned for each operator. For k points and N operators, a grid of k^N points will be constructed.
+    > custom: The user has to manually specify the dictionary "reweight_dict_tmp_" where each key,value pair represents one specific scenario of a given set of WCs.
+    
+    Finally, the SM scenario (all WCs put to 0), will be included by default.
 
 ### instructions:  
  * execute setup_production.sh to checkout cms-sw/genproductions and merge dedicated EFT tools: 
