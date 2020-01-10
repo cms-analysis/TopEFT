@@ -7,7 +7,7 @@ import math
 
 """
 example:
-python3 ProduceLHE_condor.py --tag=Initial_Test_rwgt_python3 --gridpack=./Initial_Test_rwgt_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz \
+python ProduceLHE_condor.py --tag=Initial_Test_rwgt_python3 --gridpack=./Initial_Test_rwgt_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz \
 --outdir=/eos/user/s/smoortga/LHE_output/ --neventstotal=1000 --neventsperjob=100
 """
 
