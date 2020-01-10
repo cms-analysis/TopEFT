@@ -1,11 +1,19 @@
 # Summary
-This directory contains EFT specific modifications and addons for cms-sw/genproductions which allow to prepare EFT gridpacks and LHE files based on MadGraph5_aMC@NLO. 
+This directory contains EFT specific modifications and addons for cms-sw/genproductions which allow to prepare EFT gridpacks and LHE files based on MadGraph5_aMC@NLO. **_The following setup has been tested to work on lxplus6 only!_** (login to lxplus using <username>@lxplus6.cern.ch)
+
+### Step 0: create environment and pull this repository
+```
+mkdir your_favorite_name
+cd your_favorite_name
+git clone git@github.com:cms-analysis/TopEFT.git
+cd TopEFT/mcgeneration/
+```
 
 ### Step 1: Get your UFO model
 First you need to download your preferred UFO model from the [feynrules model database](https://feynrules.irmp.ucl.ac.be/wiki/ModelDatabaseMainPage) and put it in [addons/models/](addons/models). 
 The [dim6top_LO_UFO](https://feynrules.irmp.ucl.ac.be/wiki/dim6top) has been included by default (date of writing: 10 Jan 2020).
 
-### Step 1: Configuration for your process
+### Step 2: Configuration for your process
 Open [process_cfg.py](./process_cfg.py) and fill out all the necessary fields outlined below to configure the process you want to generate and the EFT operators you want to probe:
 
   * tag: can be any name used to identify the process. It will be used as a directory name to save that cards in [addons/cards/](addons/cards). It is important to remember this tag further along.
@@ -29,6 +37,33 @@ Open [process_cfg.py](./process_cfg.py) and fill out all the necessary fields ou
     
     Finally, the SM scenario (all WCs put to 0), will be included by default.
     The naming convention (when not defining "custom" as a reweighting strategy) is defined by the `translate_weight_name` helper function. It starts with "rwgt_", followed by listing all operators with their values. Decimal points are replaced by "p" and minus signs by "min".
+
+
+### Step 3: create all cards needed for MadGraph5_aMC@NLO.
+The [prepare_process.py](prepare_process.py) script will read out the configuration from the [process_cfg.py](./process_cfg.py) file and construct the following cards in `addons/cards/<tag>`:
+	> run_card.dat<br/>
+	> proc_card.dat<br/>
+	> reweight_card.dat<br/>
+	> customizecards.dat<br/>
+	
+To this end, run:
+```
+python prepare_process.py
+```
+
+### Step 4: setup genproductions and copy needed EFT tools
+For the production of CMS samples, we need the pull the [cms-sw/genproductions](https://github.com/cms-sw/genproductions.git) package from github. The current version of this code only works with the `mg265` branch (this was written on 10th January 2020). To this end, run:
+```
+source setup_production.sh
+```
+This will create a new directory called "genproductions" alongside your current TopEFT repository and it will copy all the scripts, models, cards that you need to run your EFT sample production. At the end you will be automatically directed to the proper directory (namely `genproductions/bin/MadGraph5_aMCatNLO/`).
+
+### Step 5: Run gridpack
+within the `genproductions/bin/MadGraph5_aMCatNLO/` folder, open the [submit_madpack_ttbareft.sh](submit_madpack_ttbareft.sh) file in a text editor. At the top, please specify a `SETUPTAG` (can be whatever you want, it will be used as a unique tag in the naming of several created files and directories. Please also specify the `ORIGINALTAG`, which has to match exactly the one specified as "`tag`" in [process_cfg.py](./process_cfg.py)! This name will be used to search for the proper cards in addons/cards. Once this is done, you can run this script by doing:
+```
+source submit_madpack_ttbareft.sh
+```
+It will launch the gridpack creation in a seperate `screen` session, so you can continue doing other things. You can monitor your screen sessions doing `screen -ls`, and you can attach to the running screen session by doing `screen -r (screenID)`. Use `ctrl+a+d` to detach again form an attached screen session. After the gridpack generation is finished, the screen session will terminate automatically (which is when you will know the job has finished, and it does not show up anymore in `screen -ls`). You should now see a tarball in your directory, which holds your gridpack.
 
 ### instructions:  
  * execute setup_production.sh to checkout cms-sw/genproductions and merge dedicated EFT tools: 
