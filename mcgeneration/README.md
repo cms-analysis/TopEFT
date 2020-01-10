@@ -15,7 +15,7 @@ Open [process_cfg.py](./process_cfg.py) and fill out all the necessary fields ou
   * operators: an array of operators you want to probe. The names should match exactly those in the `parameters.py` file in your UFO directory.
   * baseline_values: an array of initial values for the Wilson coefficients of each operator. This defines the baseline scenario to which the reweighting factors will be calculated. The choice of these values is of crucial importance to ensure a proper coverage of the entire phase space. Putting all values to 0 (~SM) will most likely result in a bad coverage in the part of the Phase space where the EFT is expected to be most abundant, resulting in large weights and uncertain predictions of the yields and differential distributions. Properly assigning these values requires careful studies (please contact [Top-EFT working group conveners](mailto:cms-toppag-eft@cern.ch) in case of doubt).
   * reweighting_strategy: please choose one of the following options
-    > no_reweights: no reweighting is applied<br/>
+    > **_no_reweights_**: no reweighting is applied<br/>
     > individual: each operator is varied individually<br/>
     > rnd_scan: a random scan over all operators is performed<br/>
     > grid: a rectangular grid of Wilson coefficients is scanned<br/>
