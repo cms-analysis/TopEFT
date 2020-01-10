@@ -20,7 +20,8 @@ Open [process_cfg.py](./process_cfg.py) and fill out all the necessary fields ou
     > rnd_scan: a random scan over all operators is performed<br/>
     > grid: a rectangular grid of Wilson coefficients is scanned<br/>
     > custom: a custom reweighting scheme is provided by the user
-Then navigate to the corresponding "if statement" and fill everything
+    
+	Then navigate to the corresponding "if statement" and fill everything
 
 ### instructions:  
  * execute setup_production.sh to checkout cms-sw/genproductions and merge dedicated EFT tools: 
