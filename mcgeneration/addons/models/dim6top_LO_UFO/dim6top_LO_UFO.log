@@ -1,6 +1,6 @@
-# This file was automatically created by FeynRules 2.3.27
-# Mathematica version: 9.0 for Mac OS X x86 (64-bit) (November 20, 2012)
-# Date: Sun 20 Aug 2017 21:25:45
+# This file was automatically created by FeynRules 2.3.29
+# Mathematica version: 11.1.0 for Linux x86 (64-bit) (March 13, 2017)
+# Date: Wed 6 Jun 2018 12:54:28
 
 
 # 
@@ -32,14 +32,15 @@
 # Parameter definitions
 #
 
+   * Parameter sq2 has no value. Default value 1 assigned.
    * Parameter cQQplus has no value. Default value 1 assigned.
    * Parameter ctA has no value. Default value 1 assigned.
 
 
 # Vertices
    * Appending manually appended vertices.
-   * Number of classes vertices: 161
-   * Number of flavored vertices: 161
+   * Number of classes vertices: 340
+   * Number of flavored vertices: 340
    * Saved vertices in InterfaceRun[ 1 ].
    * Checked QNumber conservation.
       - Quantum number GhostNumber conserved in all vertices.
@@ -52,58 +53,19 @@
 # Vertex definitions
 #
 
-   * 166 vertices written.
+   * 345 vertices written.
    * vertices.py written.
 #
 # Lorentz structure definitions
 #
 
-   * 75 lorentz structures written.
+   * 67 lorentz structures written.
    * lorentz.py written.
 #
 # Coupling definitions
 #
 
-   >>>> Non positive interaction order QED found for coupling GC_138.
-   >>>> Non positive interaction order QED found for coupling GC_139.
-   >>>> Non positive interaction order QED found for coupling GC_140.
-   >>>> Non positive interaction order QED found for coupling GC_141.
-   >>>> Non positive interaction order QED found for coupling GC_142.
-   >>>> Non positive interaction order QED found for coupling GC_143.
-   >>>> Non positive interaction order QED found for coupling GC_144.
-   >>>> Non positive interaction order QED found for coupling GC_145.
-   >>>> Non positive interaction order QED found for coupling GC_157.
-   >>>> Non positive interaction order QED found for coupling GC_158.
-   >>>> Non positive interaction order QED found for coupling GC_159.
-   >>>> Non positive interaction order QED found for coupling GC_160.
-   >>>> Non positive interaction order QED found for coupling GC_161.
-   >>>> Non positive interaction order QED found for coupling GC_162.
-   >>>> Non positive interaction order QED found for coupling GC_163.
-   >>>> Non positive interaction order QED found for coupling GC_164.
-   >>>> Non positive interaction order QED found for coupling GC_165.
-   >>>> Non positive interaction order QED found for coupling GC_166.
-   >>>> Non positive interaction order QED found for coupling GC_167.
-   >>>> Non positive interaction order QED found for coupling GC_168.
-   >>>> Non positive interaction order QED found for coupling GC_169.
-   >>>> Non positive interaction order QED found for coupling GC_170.
-   >>>> Non positive interaction order QED found for coupling GC_171.
-   >>>> Non positive interaction order QED found for coupling GC_172.
-   >>>> Non positive interaction order QED found for coupling GC_173.
-   >>>> Non positive interaction order QED found for coupling GC_174.
-   >>>> Non positive interaction order QED found for coupling GC_183.
-   >>>> Non positive interaction order QED found for coupling GC_184.
-   >>>> Non positive interaction order QED found for coupling GC_185.
-   >>>> Non positive interaction order QED found for coupling GC_186.
-   >>>> Non positive interaction order QED found for coupling GC_193.
-   >>>> Non positive interaction order QED found for coupling GC_194.
-   >>>> Non positive interaction order QED found for coupling GC_195.
-   >>>> Non positive interaction order QED found for coupling GC_202.
-   >>>> Non positive interaction order QED found for coupling GC_203.
-   >>>> Non positive interaction order QED found for coupling GC_204.
-   >>>> Non positive interaction order QED found for coupling GC_205.
-   >>>> Non positive interaction order QED found for coupling GC_206.
-   >>>> Non positive interaction order QED found for coupling GC_207.
-   * 222 couplings written.
+   * 832 couplings written.
    * couplings.py written.
 #
 # Coupling order definitions

@@ -1,14 +1,10 @@
-# This file was automatically created by FeynRules 2.3.27
-# Mathematica version: 9.0 for Mac OS X x86 (64-bit) (November 20, 2012)
-# Date: Sun 20 Aug 2017 21:26:04
+# This file was automatically created by FeynRules 2.3.29
+# Mathematica version: 11.1.0 for Linux x86 (64-bit) (March 13, 2017)
+# Date: Wed 6 Jun 2018 12:55:50
 
 
 from object_library import all_orders, CouplingOrder
 
-
-DIM6 = CouplingOrder(name = 'DIM6',
-                     expansion_order = 99,
-                     hierarchy = 3)
 
 QCD = CouplingOrder(name = 'QCD',
                     expansion_order = 99,
@@ -17,4 +13,12 @@ QCD = CouplingOrder(name = 'QCD',
 QED = CouplingOrder(name = 'QED',
                     expansion_order = 99,
                     hierarchy = 2)
+
+DIM6 = CouplingOrder(name = 'DIM6',
+                     expansion_order = 99,
+                     hierarchy = 1)
+
+FCNC = CouplingOrder(name = 'FCNC',
+                     expansion_order = 99,
+                     hierarchy = 1)
 
