@@ -67,7 +67,33 @@ It will launch the gridpack creation in a seperate `screen` session, so you can 
 
 **_NOTE: gridpack generation can take several minutes up to several hours, depending on your process and the amount of weights that need to be saved._**
 
-### Step 6: Launch production of LHE files (using condor)
+### Step 6: Launch production of LHE files (using condorHT)
+within the `genproductions/bin/MadGraph5_aMCatNLO/` folder, you will see the [ProduceLHE_condor.py](ProduceLHE_condor.py) file. It will create the needed scripts and condor submission configurations to run a parallel production or a chosen number of Les Houches event files (LHE).
+It contains 5 configurable parameters:
+> **_--tag_**: A specific tag name to create log files etc.<br/>
+> **_--gridpack_**: path to the tarball from the gridpack production<br/>
+> **_--outdir_**: absolute path to the output directory where the `.lhe` files will be stored. This has to be a folder with write access and anough storage space. A good example is your personal /eos/ space, where you should have 1 TB of memory available (`/eos/user/<initial>/<username>/`)<br/>. If the directory does not yet exist, the script will try to create it, or it will terminate is it fails to do so.
+> **_--neventstotal_**: total number of events to simulate.<br/>
+> **_--neventsperjob_**: number of events per condor job. The number of jobs will be `--neventstotal/--neventsperjob` (rounded up).
+
+As an example, let's say you want to generate 1.5 million events, using 10000 events per job, with a gridpack named `test_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz`, and save the output into a directory called `/eos/user/f/frank/test_eft_production`, you should run:
+```
+python3 ProduceLHE_condor.py --tag=test \
+--gridpack=./test_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz \
+--outdir=/eos/user/f/frank/test_eft_production/ \
+--neventstotal=1500000 \
+--neventsperjob=10000
+```
+This will now create several files, amongst which is `ProduceLHE_condor_<tag>.submit`. You can submit this to the condorHT scheduler by doing:
+```
+condor_submit ProduceLHE_condor_<tag>.submit
+```
+and check the status using
+```
+condor_q
+```
+Once all jobs have finishes, the output is stored in the "`outdir`" in the form of a number of files named "`cmsgrid_final_1.lhe`" with increasing file numbers.
+
 
 ### instructions:  
  * execute setup_production.sh to checkout cms-sw/genproductions and merge dedicated EFT tools: 
