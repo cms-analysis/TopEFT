@@ -41,10 +41,10 @@ Open [process_cfg.py](./process_cfg.py) and fill out all the necessary fields ou
 
 ### Step 3: create all cards needed for MadGraph5_aMC@NLO.
 The [prepare_process.py](prepare_process.py) script will read out the configuration from the [process_cfg.py](./process_cfg.py) file and construct the following cards in `addons/cards/<tag>`:
-	> run_card.dat<br/>
-	> proc_card.dat<br/>
-	> reweight_card.dat<br/>
-	> customizecards.dat<br/>
+> run_card.dat<br/>
+> proc_card.dat<br/>
+> reweight_card.dat<br/>
+> customizecards.dat<br/>
 	
 To this end, run:
 ```
@@ -64,6 +64,10 @@ within the `genproductions/bin/MadGraph5_aMCatNLO/` folder, open the [submit_mad
 source submit_madpack_ttbareft.sh
 ```
 It will launch the gridpack creation in a seperate `screen` session, so you can continue doing other things. You can monitor your screen sessions doing `screen -ls`, and you can attach to the running screen session by doing `screen -r (screenID)`. Use `ctrl+a+d` to detach again form an attached screen session. After the gridpack generation is finished, the screen session will terminate automatically (which is when you will know the job has finished, and it does not show up anymore in `screen -ls`). You should now see a tarball in your directory, which holds your gridpack.
+
+**_NOTE: gridpack generation can take several minutes up to several hours, depending on your process and the amount of weights that need to be saved._**
+
+### Step 6: Launch production of LHE files (using condor)
 
 ### instructions:  
  * execute setup_production.sh to checkout cms-sw/genproductions and merge dedicated EFT tools: 
