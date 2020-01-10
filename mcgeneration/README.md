@@ -59,7 +59,7 @@ source setup_production.sh
 This will create a new directory called "genproductions" alongside your current TopEFT repository and it will copy all the scripts, models, cards that you need to run your EFT sample production. At the end you will be automatically directed to the proper directory (namely `genproductions/bin/MadGraph5_aMCatNLO/`).
 
 ### Step 5: Run gridpack
-within the `genproductions/bin/MadGraph5_aMCatNLO/` folder, open the [submit_madpack_ttbareft.sh](submit_madpack_ttbareft.sh) file in a text editor. At the top, please specify a `SETUPTAG` (can be whatever you want, it will be used as a unique tag in the naming of several created files and directories. Please also specify the `ORIGINALTAG`, which has to match exactly the one specified as "`tag`" in [process_cfg.py](./process_cfg.py)! This name will be used to search for the proper cards in addons/cards. Once this is done, you can run this script by doing:
+within the `genproductions/bin/MadGraph5_aMCatNLO/` folder, open the [submit_madpack_ttbareft.sh](submit_madpack_ttbareft.sh) file in a text editor. At the top, please specify a `SETUPTAG` (can be whatever you want, it will be used as a unique tag in the naming of several created files and directories). Please also specify the `ORIGINALTAG`, which has to match **exactly** the one specified as "`tag`" in [process_cfg.py](./process_cfg.py)! This name will be used to search for the proper cards in addons/cards. Once this is done, you can run this script by doing:
 ```
 source submit_madpack_ttbareft.sh
 ```
