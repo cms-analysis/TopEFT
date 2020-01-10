@@ -16,16 +16,16 @@ Open [process_cfg.py](./process_cfg.py) and fill out all the necessary fields ou
   * baseline_values: an array of initial values for the Wilson coefficients of each operator. This defines the baseline scenario to which the reweighting factors will be calculated. The choice of these values is of crucial importance to ensure a proper coverage of the entire phase space. Putting all values to 0 (~SM) will most likely result in a bad coverage in the part of the Phase space where the EFT is expected to be most abundant, resulting in large weights and uncertain predictions of the yields and differential distributions. Properly assigning these values requires careful studies (please contact [Top-EFT working group conveners](mailto:cms-toppag-eft@cern.ch) in case of doubt).
   * reweighting_strategy: please choose one of the following options
     > **_no_reweights_**: no reweighting is applied<br/>
-    > individual: each operator is varied individually<br/>
-    > rnd_scan: a random scan over all operators is performed<br/>
-    > grid: a rectangular grid of Wilson coefficients is scanned<br/>
-    > custom: a custom reweighting scheme is provided by the user
+    > **_individual_**: each operator is varied individually<br/>
+    > **_rnd_scan_**: a random scan over all operators is performed<br/>
+    > **_grid_**: a rectangular grid of Wilson coefficients is scanned<br/>
+    > **_custom_**: a custom reweighting scheme is provided by the user
     
 	Then navigate to the corresponding "if statement" and fill out the needed parameters:
-	> individual: "`points_individual`" is an array of arrays where in each subarray the user has to manually specify the values of the WCs to be scanned for the corresponding operator (using the same ordering as the "`operators`" variable).<br/>
-    > rnd_scan: specify in "`n_points`" the number of scan points (NOTE: for N operators you need at least `1 + 2*N + (N*(N-1))/2` scan points to determine the quadratic function of the cross section). Then specify the boundaries for each operator in "`boundaries`".
-    > grid: Specify in each subarray of "`boundaries_and_npoints`" the lower and upper boundary as well as the number of points to be scanned for each operator. For k points and N operators, a grid of k^N points will be constructed.
-    > custom: The user has to manually specify the dictionary "`reweight_dict_tmp_`" where each key,value pair represents one specific scenario of a given set of WCs.
+	> **_individual_**: "`points_individual`" is an array of arrays where in each subarray the user has to manually specify the values of the WCs to be scanned for the corresponding operator (using the same ordering as the "`operators`" variable).<br/>
+    > **_rnd_scan_**: specify in "`n_points`" the number of scan points (NOTE: for N operators you need at least `1 + 2*N + (N*(N-1))/2` scan points to determine the quadratic function of the cross section). Then specify the boundaries for each operator in "`boundaries`".
+    > **_grid_**: Specify in each subarray of "`boundaries_and_npoints`" the lower and upper boundary as well as the number of points to be scanned for each operator. For k points and N operators, a grid of k^N points will be constructed.
+    > **_custom_**: The user has to manually specify the dictionary "`reweight_dict_tmp_`" where each key,value pair represents one specific scenario of a given set of WCs.
     
     Finally, the SM scenario (all WCs put to 0), will be included by default.
     The naming convention (when not defining "custom" as a reweighting strategy) is defined by the `translate_weight_name` helper function. It starts with "rwgt_", followed by listing all operators with their values. Decimal points are replaced by "p" and minus signs by "min".
