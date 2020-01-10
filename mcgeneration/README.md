@@ -13,7 +13,14 @@ Open [process_cfg.py](./process_cfg.py) and fill out all the necessary fields ou
   * processes: an array of strings, each representing a process you want to generate with Madgraph. These processes will be added together in the proc_card.dat.
   * flavour_scheme: specify here whether you want to use the 4F (massive b, not in the proton pdf) or 5F scheme (massless b, included in the proton pdf).
   * operators: an array of operators you want to probe. The names should match exactly those in the `parameters.py` file in your UFO directory.
-  * baseline_values: an array of initial values for the Wilson coefficients of each operator. This defines the baseline scenario to which the reweighting factors will be calculated. The choice of these values is of crucial importance to ensure a proper coverage of the entire phase space. Putting all values to 0 (~SM) will most likely result in a bas coverage in the part of the Phase space where the EFT is expected to be most abundant, resulting in large weights and uncertain predictions of the yields and differential distributions. This requires careful studies (please contact [Top-EFT working group conveners](mailto:cms-toppag-eft@cern.ch) in case of doubt).
+  * baseline_values: an array of initial values for the Wilson coefficients of each operator. This defines the baseline scenario to which the reweighting factors will be calculated. The choice of these values is of crucial importance to ensure a proper coverage of the entire phase space. Putting all values to 0 (~SM) will most likely result in a bad coverage in the part of the Phase space where the EFT is expected to be most abundant, resulting in large weights and uncertain predictions of the yields and differential distributions. Properly assigning these values requires careful studies (please contact [Top-EFT working group conveners](mailto:cms-toppag-eft@cern.ch) in case of doubt).
+  * reweighting_strategy: please choose one of the following options
+    * no_reweights: no reweighting is applied
+    * individual: each operator is varied individually
+    * rnd_scan: a random scan over all operators is performed
+    * grid: a rectangular grid of Wilson coefficients is scanned
+    * custom: a custom reweighting scheme is provided by the user
+   Then navigate to the corresponding "if statement" and fill everything
 
 ### instructions:  
  * execute setup_production.sh to checkout cms-sw/genproductions and merge dedicated EFT tools: 
