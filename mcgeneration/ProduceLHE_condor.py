@@ -7,7 +7,7 @@ import math
 
 """
 example:
-python ProduceLHE_condor.py --tag=Initial_Test_rwgt --gridpack=./Initial_Test_rwgt_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz \
+python3 ProduceLHE_condor.py --tag=Initial_Test_rwgt_python3 --gridpack=./Initial_Test_rwgt_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz \
 --outdir=/eos/user/s/smoortga/LHE_output/ --neventstotal=1000 --neventsperjob=100
 """
 
@@ -28,22 +28,22 @@ if not os.path.isdir(os.path.abspath(args.outdir)):
 	while need_answer:
 		answer = raw_input("The output directory (%s) is not found, should I try to create it now (y/n)?"%os.path.abspath(args.outdir))
 		if answer == "n": 
-			print "Exiting..."
+			print("Exiting...")
 			sys.exit(1)
 		elif answer == "y": 
 			os.mkdir(os.path.abspath(args.outdir))
 			if not os.path.isdir(os.path.abspath(args.outdir)):
-				print "creating directory failed (do you have proper acces rights?)"
-				print "Exiting..."
+				print("creating directory failed (do you have proper acces rights?)")
+				print("Exiting...")
 				sys.exit(1)
 			need_answer = False
 		else:
-			print "please type either 'y' or 'n'"
+			print("please type either 'y' or 'n'")
 
 
 # create a text file with the production paramters
 njobs = int(math.ceil(float(args.neventstotal)/float(args.neventsperjob)))
-print "preparing %i jobs"%njobs
+print("preparing %i jobs"%njobs)
 initial_seed = int(random.uniform(1,1000))
 remaining_events = args.neventstotal
 f_tmp_ = open(os.getcwd()+"/params_condor.txt", 'w')
@@ -79,3 +79,6 @@ f_tmp_condor_.write("when_to_transfer_output = ON_EXIT \n")
 f_tmp_condor_.write('transfer_output_remaps = "cmsgrid_final.lhe = %s/cmsgrid_final_$(number).lhe" \n'%args.outdir)
 f_tmp_condor_.write("queue number,rnd,nevents from params_condor.txt \n")
 f_tmp_condor_.close()
+
+print("The jobs can now be submitted via condor with 'condor_submit ProduceLHE_condor_%s.submit'"%((args.tag).replace(" ","_")))
+print("The status can then be checked using 'condor_q'")

@@ -1,5 +1,8 @@
 from process_cfg import *
 
+"""
+python3 prepare_process.py
+"""
 
 #*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 #
