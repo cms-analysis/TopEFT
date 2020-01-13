@@ -217,7 +217,7 @@ if reweighting_strategy == "individual":
 #
 # * - * - * - * - 
 
-n_points = 150
+n_points = 30
 if reweighting_strategy == "rnd_scan":
 	assert n_points >= (1. + 2.*len(operators) + (len(operators)*(len(operators)-1.))/2.), \
 			"ERROR: you need at least %i points for %i operators to fully determine the coefficients of the quadratic form"%((1. + 2.*len(operators) + (len(operators)*(len(operators)-1.))/2.),len(operators))
