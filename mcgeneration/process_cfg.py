@@ -217,7 +217,7 @@ if reweighting_strategy == "individual":
 #
 # * - * - * - * - 
 
-n_points = 30
+n_points = 150
 if reweighting_strategy == "rnd_scan":
 	assert n_points >= (1. + 2.*len(operators) + (len(operators)*(len(operators)-1.))/2.), \
 			"ERROR: you need at least %i points for %i operators to fully determine the coefficients of the quadratic form"%((1. + 2.*len(operators) + (len(operators)*(len(operators)-1.))/2.),len(operators))
@@ -230,7 +230,7 @@ boundaries = [
 	[-2.,2.],
 	[-2.,2.],
 	[-2.,2.],
-	[-2.,2.],
+	[-2.,2.]
 ]
 
 if reweighting_strategy == "rnd_scan":
@@ -269,7 +269,7 @@ boundaries_and_npoints = [
 	[-2.,2.,5],
 ]
 
-if reweighting_strategy == "rnd_scan":
+if reweighting_strategy == "grid":
 	assert len(boundaries_and_npoints) == len(operators), \
 			"ERROR: length of boundaries_and_npoints should be the same as that of operators"
 
