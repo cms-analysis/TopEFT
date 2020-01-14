@@ -72,7 +72,7 @@ within the `genproductions/bin/MadGraph5_aMCatNLO/` folder, you will see the [Pr
 It contains 5 configurable parameters:
 > **_--tag_**: A specific tag name to create log files etc.<br/>
 > **_--gridpack_**: path to the tarball from the gridpack production<br/>
-> **_--outdir_**: absolute path to the output directory where the `.lhe` files will be stored. This has to be a folder with write access and anough storage space. A good example is your personal /eos/ space, where you should have 1 TB of memory available (`/eos/user/<initial>/<username>/`)<br/>. If the directory does not yet exist, the script will try to create it, or it will terminate is it fails to do so.
+> **_--outdir_**: absolute path to the output directory where the `.lhe` files will be stored. This has to be a folder with write access and anough storage space. A good example is your personal /eos/ space, where you should have 1 TB of memory available (`/eos/user/<initial>/<username>/`)<br/>. If the directory does not yet exist, the script will try to create it, or it will terminate is it fails to do so.<br/>
 > **_--jobflavour_**: jobFlavour as described in [https://batchdocs.web.cern.ch/local/submit.html](https://batchdocs.web.cern.ch/local/submit.html). This defines the walltime for each job.<br/>
 > **_--neventstotal_**: total number of events to simulate.<br/>
 > **_--neventsperjob_**: number of events per condor job. The number of jobs will be `--neventstotal/--neventsperjob` (rounded up).
