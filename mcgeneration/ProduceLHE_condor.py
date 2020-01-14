@@ -95,7 +95,7 @@ f_tmp_condor_.write("should_transfer_files = YES \n")
 f_tmp_condor_.write("transfer_input_files = %s \n"%((args.gridpack).split("/")[-1]))
 f_tmp_condor_.write("when_to_transfer_output = ON_EXIT \n")
 f_tmp_condor_.write('transfer_output_remaps = "cmsgrid_final.lhe = %s/cmsgrid_final_$(number).lhe" \n'%args.outdir)
-f_tmp_condor_.write('+JobFlavour = %s \n' %args.jobflavour)
+f_tmp_condor_.write('+JobFlavour = "%s" \n' %args.jobflavour)
 f_tmp_condor_.write("queue number,rnd,nevents from params_condor.txt \n")
 f_tmp_condor_.close()
 
