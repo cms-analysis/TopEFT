@@ -7,8 +7,8 @@ import math
 
 """
 example:
-python ProduceLHE_condor.py --tag=Initial_Test_rwgt_python3 --gridpack=./Initial_Test_rwgt_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz \
---outdir=/eos/user/s/smoortga/LHE_output/ --neventstotal=1000 --neventsperjob=100
+python ProduceLHE_condor.py --tag=Initial_Test_rwgt --gridpack=./Initial_Test_rwgt_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz \
+--outdir=/eos/user/s/smoortga/LHE_output_1M/ --jobflavour=longlunch --neventstotal=1000000 --neventsperjob=5000
 """
 
 parser = ArgumentParser()
@@ -17,7 +17,25 @@ parser.add_argument('--gridpack', default=os.getcwd()+"/test_tarball.tar.xz",hel
 parser.add_argument('--neventstotal', type=int, default=1000,help='total number of simulated LHE events')
 parser.add_argument('--neventsperjob', type=int, default=100,help='number of events per condor job')
 parser.add_argument('--outdir', default=os.getcwd(),help='output directory with enough space for the LHE files and with write priviledges (example: EOS)')
+parser.add_argument('--jobflavour', default="microcentury",help='jobFlavour as described in https://batchdocs.web.cern.ch/local/submit.html')
 args = parser.parse_args()
+
+# check if jobflavour is valid
+"""
+https://batchdocs.web.cern.ch/local/submit.html
+espresso     = 20 minutes
+microcentury = 1 hour
+longlunch    = 2 hours
+workday      = 8 hours
+tomorrow     = 1 day
+testmatch    = 3 days
+nextweek     = 1 week
+"""
+if not(args.jobflavour in ["espresso","microcentury","longlunch","workday","tomorrow","testmatch","nextweek"]):
+	print("ERROR: unknown jobflavour! should be one of the following: 'espresso','microcentury','longlunch','workday','tomorrow','testmatch','nextweek'")
+	print("Exiting...")
+	sys.exit(1)
+	
 
 # Create directory to store the log files
 if not os.path.isdir(os.getcwd()+"/condor_log_"+(args.tag).replace(" ","_")): os.mkdir(os.getcwd()+"/condor_log_"+(args.tag).replace(" ","_"))
@@ -77,6 +95,7 @@ f_tmp_condor_.write("should_transfer_files = YES \n")
 f_tmp_condor_.write("transfer_input_files = %s \n"%((args.gridpack).split("/")[-1]))
 f_tmp_condor_.write("when_to_transfer_output = ON_EXIT \n")
 f_tmp_condor_.write('transfer_output_remaps = "cmsgrid_final.lhe = %s/cmsgrid_final_$(number).lhe" \n'%args.outdir)
+f_tmp_condor_.write('+JobFlavour = %s \n' %args.jobflavour)
 f_tmp_condor_.write("queue number,rnd,nevents from params_condor.txt \n")
 f_tmp_condor_.close()
 
