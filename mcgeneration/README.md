@@ -69,7 +69,7 @@ It will launch the gridpack creation in a seperate `screen` session, so you can 
 
 ### Step 6: Launch production of LHE files (using condorHT)
 within the `genproductions/bin/MadGraph5_aMCatNLO/` folder, you will see the [ProduceLHE_condor.py](ProduceLHE_condor.py) file. It will create the needed scripts and condor submission configurations to run a parallel production or a chosen number of Les Houches event files (LHE).
-It contains 5 configurable parameters:
+It contains 6 configurable parameters:
 > **_--tag_**: A specific tag name to create log files etc.<br/>
 > **_--gridpack_**: path to the tarball from the gridpack production<br/>
 > **_--outdir_**: absolute path to the output directory where the `.lhe` files will be stored. This has to be a folder with write access and anough storage space. A good example is your personal /eos/ space, where you should have 1 TB of memory available (`/eos/user/<initial>/<username>/`). If the directory does not yet exist, the script will try to create it, or it will terminate is it fails to do so.<br/>
@@ -103,5 +103,8 @@ It is often convenient for further processing to have one single LHE files with 
 source MergeLHE.sh /eos/user/f/frank/test_eft_production/ 
 ```
 This will launch in a screen session the merging of the LHE files, resulting once finished in one single LHE file called `merged_LHE.lhe`. You are now free to delete the number subfiles to save storage space. The screen session can be monitored as explained in Step 5.
+
+**_NOTE: merging LHE files can take several minutes up to several hours, depending on the number of events. For more
+than ~100k events, this becomes practically very difficult._**
 
 
