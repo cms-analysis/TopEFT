@@ -19,7 +19,7 @@ else
     cd ${GENPRODPATH}
 
     # copy eft relevant code  
-    for COPY in addons submit_madpack_ttbareft.sh ProduceLHE_condor.py MergeLHE.sh ; do 
+    for COPY in addons submit_gridpack_EFT.sh ProduceLHE_condor.py MergeLHE.sh ; do 
 	cp -r ${EFTMCPATH}/${COPY} ${GENPRODPATH}/bin/MadGraph5_aMCatNLO/.
     done
 

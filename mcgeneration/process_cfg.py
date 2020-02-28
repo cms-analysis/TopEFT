@@ -120,14 +120,17 @@ assert len(baseline_values) == len(operators), \
 #
 # 		REWEIGHTING
 #
-# please choose one of the following options
+# please choose one or multiple of the following options
 # 	no_reweights: no reweighting is applied
 #	individual: each operator is varied individually
+#	minimal: a minimal set of scan points over all operators, to derive the quadratic dependence (based on tetrahedron construction)
 # 	rnd_scan: a random scan over all operators is performed
 #	grid: a rectangular grid of Wilson coefficients is scanned
 #	custom: a custom reweighting scheme is provided by the user
 #
-# Then navigate to the corresponding "if statement" and fill everything
+#	--> specify your desired strategies in an array of strings
+#
+# Then navigate to the corresponding "if statement(s)" and fill everything
 #
 #*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
@@ -139,7 +142,7 @@ assert len(baseline_values) == len(operators), \
 #          |
 #          \/	
 	
-reweighting_strategy = "rnd_scan"
+reweighting_strategy = ["minimal","custom"]
 
 #     /\  		  /\	
 #     |   	 	   | 
@@ -147,8 +150,10 @@ reweighting_strategy = "rnd_scan"
 #*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 #*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 #*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-assert reweighting_strategy in ["no_reweights","individual","rnd_scan","grid","custom"], \
-		"ERROR: the reweighting_strategy needs to be no_reweights, individual, rnd_scan, grid or custom"
+assert all(x in ["no_reweights","individual","rnd_scan","grid","custom","minimal"] for x in reweighting_strategy), \
+	"ERROR: the reweighting_strategy needs to be no_reweights, individual, rnd_scan, grid, minimal or custom"
+#assert reweighting_strategy in ["no_reweights","individual","rnd_scan","grid","custom"]
+		
 		
 
 
@@ -237,6 +242,57 @@ if reweighting_strategy == "rnd_scan":
 	assert len(boundaries) == len(operators), \
 				"ERROR: length of boundaries should be the same as that of operators"
 
+
+
+
+
+# * - * - * - * - 
+#
+#		MINIMAL
+#
+# A minimal set of scan points is selected to construct 
+# the d-dimensional quadratic function.
+# when d Wilson coefficients are considered,
+# one needs at least 1 + 2d + [d(d-1)]/2
+# scan points for d operators.
+# Construction based on the sum of the wilson coeff being smaller than
+# the order of the polinomial (2 in most cases, but can be higher for 
+# multiple insertions of EFT operators) + equally spaced
+# Example with 2 operators: C1+C2<2 --> 6 combinations with sum < 2: (2,0), (1,1), (0,2), (0,1), (1,0), (0,0)
+# (can be scaled to other boundaries)
+#
+# /\
+# |		*
+# |	
+# |		*	 	*
+# |  
+# |		*		*		*
+# |    
+# ---------------------------->
+#
+# * - * - * - * - 
+
+# * - * - * - * - 
+# Please specify lower and upper limits for rnd_scanning each operator
+# * - * - * - * - 
+
+boundaries_minimal_scan = [
+	[-2.,2.],
+	[-2.,5.2],
+	[-2.,2.],
+	[-7.3,1.22]
+]
+
+if reweighting_strategy == "minimal":
+	assert len(boundaries_minimal_scan) == len(operators), \
+				"ERROR: length of boundaries_minimal_scan should be the same as that of operators"
+
+
+# * - * - * - * - 
+# Please specify the order of the polinomial (usually 2)
+# * - * - * - * - 
+
+order = 2
 
 
 

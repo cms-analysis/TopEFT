@@ -1,6 +1,5 @@
 #!/bin/bash                                                                                                                                                                                                       
-SETUPTAG=( Initial_Test_rwgt ) 
-ORIGINALTAG=Initial_Test
+SETUPTAG=( REPLACETAG ) 
 NSETUPTAG=`echo "scale=0; ${#SETUPTAG[@]} -1 " | bc`
 for ISETUPTAG in `seq 0 ${NSETUPTAG}`; do
     SETUP=${SETUPTAG[${ISETUPTAG}]}
@@ -8,7 +7,7 @@ for ISETUPTAG in `seq 0 ${NSETUPTAG}`; do
 	# prepare card files 
     mkdir -p addons/cards/${SETUP}
     for CARD in run_card proc_card customizecards reweight_card; do 
-	cp -rp addons/cards/${ORIGINALTAG}/${CARD}.dat  addons/cards/${SETUP}/${SETUP}_${CARD}.dat
+	cp -rp addons/cards/${SETUP}/${CARD}.dat  addons/cards/${SETUP}/${SETUP}_${CARD}.dat
     done 
     sed -i -e "s|SUBSETUP|${SETUP}|g" addons/cards/${SETUP}/${SETUP}_*.dat 
     
