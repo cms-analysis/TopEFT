@@ -1,5 +1,5 @@
 # Summary
-This directory contains EFT specific modifications and addons for cms-sw/genproductions which allow to prepare EFT gridpacks and LHE files based on MadGraph5_aMC@NLO. **_The following setup has been tested to work on lxplus6 only!_** (login to lxplus using <username>@lxplus6.cern.ch)
+This directory contains EFT specific modifications and addons for cms-sw/genproductions which allow to prepare EFT gridpacks and LHE files based on MadGraph5_aMC@NLO. **_The following setup has been tested to work on lxplus7 only!_** (login to lxplus using <username>@lxplus7.cern.ch)
 
 ### Step 0: create environment and pull this repository
 ```
