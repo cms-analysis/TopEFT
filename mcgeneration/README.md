@@ -27,12 +27,14 @@ Open [process_cfg.py](./process_cfg.py) and fill out all the necessary fields ou
     > **_individual_**: each operator is varied individually<br/>
     > **_rnd_scan_**: a random scan over all operators is performed<br/>
     > **_grid_**: a rectangular grid of Wilson coefficients is scanned<br/>
+    > **_minimal_**: a tetrahedron-construction of scan points that picks the minimal number of scan points needed for a fit of a given order<br/>
     > **_custom_**: a custom reweighting scheme is provided by the user
     
 	Then navigate to the corresponding "if statement" and fill out the needed parameters:
 	> **_individual_**: "`points_individual`" is an array of arrays where in each subarray the user has to manually specify the values of the WCs to be scanned for the corresponding operator (using the same ordering as the "`operators`" variable).<br/>
     > **_rnd_scan_**: specify in "`n_points`" the number of scan points (NOTE: for N operators you need at least `1 + 2*N + (N*(N-1))/2` scan points to determine the quadratic function of the cross section). Then specify the boundaries for each operator in "`boundaries`".<br/>
-    > **_grid_**: Specify in each subarray of "`boundaries_and_npoints`" the lower and upper boundary as well as the number of points to be scanned for each operator. For k points and N operators, a grid of k^N points will be constructed.<br/>
+    > **_grid_**: specify in each subarray of "`boundaries_and_npoints`" the lower and upper boundary as well as the number of points to be scanned for each operator. For k points and N operators, a grid of k^N points will be constructed.<br/>
+    > **_minimal_**: specify in each subarray of "`boundaries_minimal_scan`" the lower and upper boundary of each operator. Also the "`order`" of the fitted yield must be given (usually 2, but can be 1 for interference only or larger than 2 for multiple insertions of EFT operators).<br/>
     > **_custom_**: The user has to manually specify the dictionary "`reweight_dict_tmp_`" where each key,value pair represents one specific scenario of a given set of WCs.
     
     Finally, the SM scenario (all WCs put to 0), will be included by default.
@@ -51,6 +53,8 @@ To this end, run:
 python prepare_process.py
 ```
 
+This will also create a copy of [submit_gridpack_EFT_template.sh](submit_gridpack_EFT_template.sh), which will be called "`submit_gridpack_EFT.sh`" and for which the chosen "`tag`" is correctly inserted in the script.
+
 ### Step 4: setup genproductions and copy needed EFT tools
 For the production of CMS samples, we need the pull the [cms-sw/genproductions](https://github.com/cms-sw/genproductions.git) package from github. The current version of this code only works with the `mg265` branch (this was written on 10th January 2020). To this end, run:
 ```
@@ -59,11 +63,12 @@ source setup_production.sh
 This will create a new directory called "genproductions" alongside your current TopEFT repository and it will copy all the scripts, models, cards that you need to run your EFT sample production. At the end you will be automatically directed to the proper directory (namely `genproductions/bin/MadGraph5_aMCatNLO/`).
 
 ### Step 5: Run gridpack
-within the `genproductions/bin/MadGraph5_aMCatNLO/` folder, open the [submit_madpack_ttbareft.sh](submit_madpack_ttbareft.sh) file in a text editor. At the top, please specify a `SETUPTAG` (can be whatever you want, it will be used as a unique tag in the naming of several created files and directories). Please also specify the `ORIGINALTAG`, which has to match **exactly** the one specified as "`tag`" in [process_cfg.py](./process_cfg.py)! This name will be used to search for the proper cards in addons/cards. Once this is done, you can run this script by doing:
+within the `genproductions/bin/MadGraph5_aMCatNLO/` folder, you can run this "`submit_gridpack_EFT.sh`" script by doing:
 ```
-source submit_madpack_ttbareft.sh
+source submit_gridpack_EFT.sh slc7_amd64_gcc700 CMSSW_10_2_18
 ```
-It will launch the gridpack creation in a seperate `screen` session, so you can continue doing other things. You can monitor your screen sessions doing `screen -ls`, and you can attach to the running screen session by doing `screen -r (screenID)`. Use `ctrl+a+d` to detach again form an attached screen session. After the gridpack generation is finished, the screen session will terminate automatically (which is when you will know the job has finished, and it does not show up anymore in `screen -ls`). You should now see a tarball in your directory, which holds your gridpack.
+There are two optional arguments, namely the SCRAM architecture (argument 1) and the CMSSW version (argument 2) that are to be used for the gridpack generation. Make sure these are compatible with your machine (lxplus7 or lxplus6). If these are not given, by default the script takes `slc7_amd64_gcc700` and `CMSSW_10_2_18`, which can be run from lxplus7. 
+The above command will launch the gridpack creation locally but in a seperate `screen` session, so you can continue doing other things. You can monitor your screen sessions doing `screen -ls`, and you can attach to the running screen session by doing `screen -r (screenID)`. Use `ctrl+a+d` to detach again form an attached screen session. After the gridpack generation is finished, the screen session will terminate automatically (which is when you will know the job has finished, and it does not show up anymore in `screen -ls`). You should now see a tarball in your directory, which holds your gridpack.
 
 **_NOTE: gridpack generation can take several minutes up to several hours, depending on your process and the amount of weights that need to be saved._**
 
