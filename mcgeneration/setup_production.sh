@@ -15,11 +15,11 @@ if [ -d "$GENPRODPATH" ]; then
 else 
     mkdir -p ${GENPRODPATH}
     cd ${GENPRODPATH}/..
-    git clone -b mg265   https://github.com/cms-sw/genproductions.git genproductions 
+    git clone -b mg265 https://github.com/cms-sw/genproductions.git genproductions 
     cd ${GENPRODPATH}
 
     # copy eft relevant code  
-    for COPY in addons submit_madpack_ttbareft.sh ; do 
+    for COPY in addons submit_gridpack_EFT.sh ProduceLHE_condor.py MergeLHE.sh ; do 
 	cp -r ${EFTMCPATH}/${COPY} ${GENPRODPATH}/bin/MadGraph5_aMCatNLO/.
     done
 
